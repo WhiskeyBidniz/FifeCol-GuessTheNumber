@@ -21,32 +21,45 @@ namespace GuessTheNumber
             Random rand = new Random();
             int Guesses =  0;
             int secretNumber = rand.Next(1,10);
+            
             //Console.WriteLine("Secret Number is " + secretNumber);
-            int playerInput = Convert.ToInt32(Console.ReadLine());
-            Guesses += 1;
-            Console.WriteLine("You guessed " + playerInput);
-            if (playerInput == secretNumber)
-            {
-                Console.WriteLine("Congrats You guessed correct! The number was " + secretNumber);
-            }
-            else
-            {
-                Console.WriteLine("Sorry! You didn't guess the right number. Try Again");
 
-                if (secretNumber < playerInput)
+            
+            int playerInput = Convert.ToInt32(Console.ReadLine());
+            Guesses++;
+            
+           
+
+            while (playerInput != secretNumber)
+            {
+                
+
+                Console.WriteLine("You guessed " + playerInput);
+                if (playerInput == secretNumber)
                 {
-                    Console.WriteLine("Aim Lower!");
+                    Console.WriteLine("Congrats You guessed correct! The number was " + secretNumber);
                 }
                 else
                 {
-                    Console.WriteLine("Aim Higher");
+                    Console.WriteLine("Sorry! You didn't guess the right number. Try Again!");
+
+                    if (secretNumber < playerInput)
+                    {
+                        Console.WriteLine("Aim Lower!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Aim Higher!");
+                    }
+
+                    playerInput = Convert.ToInt32(Console.ReadLine());
+                    ++Guesses;
                 }
             }
 
-            
 
-
-
+            Console.WriteLine("Congrats You guessed correct! The number was " + secretNumber);
+            Console.WriteLine("You did this in " + Guesses + " tries!"); 
 
 
 
